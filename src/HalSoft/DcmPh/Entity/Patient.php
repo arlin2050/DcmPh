@@ -21,6 +21,11 @@ class Patient extends DicomResponse implements DicomObjectInterface
     {
         if(isset($this->dicom_tags[DicomDictionary::PATIENT_BIRTH_DATE])) {
             $res = \DateTime::createFromFormat('Ymd', $this->dicom_tags[DicomDictionary::PATIENT_BIRTH_DATE]);
+
+            if(!$res) {
+                return null;
+            }
+
             if($format == null) {
                 return $res;
             } else {

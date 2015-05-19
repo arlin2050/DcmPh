@@ -30,7 +30,11 @@ class Study extends DicomResponse implements DicomObjectInterface
         if(!isset($this->dicom_tags[DicomDictionary::STUDY_DATE]) || !isset($this->dicom_tags[DicomDictionary::STUDY_TIME])) {
             return false;
         }
-        $res = \DateTime::createFromFormat('YmdHis', $this->dicom_tags[DicomDictionary::STUDY_DATE].$this->dicom_tags[DicomDictionary::STUDY_TIME]);
+        $res = \DateTime::createFromFormat('YmdHis.u', $this->dicom_tags[DicomDictionary::STUDY_DATE].$this->dicom_tags[DicomDictionary::STUDY_TIME]);
+
+        if(!$res) {
+            return null;
+        }
 
         if($format == null) {
             return $res;
