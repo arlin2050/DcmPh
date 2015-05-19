@@ -1,14 +1,16 @@
 {
-    "name": "halsoft/dcmph",
+    "name": "arlin2050/dcmph",
     "description": "A php interface to offis's dcmtk",
     "keywords": ["dicom", "pacs", "php"],
-    "homepage": "https://github.com/halsoft/DcmPh",
+    "homepage": "https://github.com/arlin2050/DcmPh",
     "type": "library",
     "license": "MIT",
     "authors": [
         {
             "name": "Luca Saba",
-            "email": "luca.saba@halsoftware.org"
+            "email": "luca.saba@halsoftware.org",
+            "name": "André Cardoso",
+            "email": "acardoso@orupaca.fr"
         }
     ],
     "require": {

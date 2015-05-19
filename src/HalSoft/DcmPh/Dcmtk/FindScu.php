@@ -19,6 +19,7 @@ abstract class FindScu
     protected $parameters;
     protected $query_information_model;
     protected $logger;
+    const CHARSET = 'latin-1';
 
     public function __construct($called_aet, $pacs_ip, $pacs_port, $calling_aet = null, LoggerInterface $logger = null)
     {
@@ -92,7 +93,7 @@ abstract class FindScu
             return false;
         }
         $random_filename = md5("xml_outfile_".rand(10000, 99999)).".xml";
-        exec("dcm2xml $filename $random_filename 2> /dev/null");
+        exec("dcm2xml +Ca ". self::CHARSET ." $filename $random_filename 2> /dev/null");
         if (null !== $this->logger) {
             $this->logger->info("Converting dcm file %s to xml with the name %s", $filename, $random_filename);
         }
