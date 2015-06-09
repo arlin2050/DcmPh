@@ -50,4 +50,12 @@ class Study extends DicomResponse implements DicomObjectInterface
         }
         return false;
     }
+
+    public function getPatientId()
+    {
+        if(isset($this->dicom_tags[DicomDictionary::PATIENT_ID])) {
+            return $this->dicom_tags[DicomDictionary::PATIENT_ID];
+        }
+        return false;
+    }
 }
